@@ -1,123 +1,196 @@
 /* ==================================================
-   General Styling
+   ENCRYPTIX STYLE SHEET - TECH INSPIRED FINAL VERSION
    ================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* -------------------- General -------------------- */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background-color: #f8f6fb;
+  background: radial-gradient(circle at 20% 20%, #f7f5ff, #ede7fa);
   color: #2c2c2c;
+  overflow-x: hidden;
 }
 
-/* ==================================================
-   Header (Animated Gradient)
-   ================================================== */
+/* -------------------- Header -------------------- */
 header {
-  background: linear-gradient(270deg, #4b0082, #5a189a, #9d4edd);
+  background: linear-gradient(270deg, #4b0082, #5a189a, #7b2cbf, #9d4edd);
   background-size: 600% 600%;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
-  padding: 25px 0;
-  animation: gradientShift 8s ease infinite, fadeIn 2s ease-in;
+  padding: 40px 0 35px;
+  animation: gradientShift 10s ease infinite, fadeIn 2s ease-in;
+  box-shadow: 0 0 25px rgba(157, 78, 221, 0.6);
+  position: relative;
+  z-index: 1;
 }
 
 header img {
   width: 180px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
   margin-bottom: 10px;
 }
 
-/* Animated gradient effect */
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  margin: 10px 0 5px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+header p {
+  font-size: 1rem;
+  color: #e0d8f5;
+  margin: 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ==================================================
-   Navigation
-   ================================================== */
+/* -------------------- Menu Toggle -------------------- */
+.menu-toggle {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  background: rgba(75, 0, 130, 0.85);
+  color: #ffffff;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.4);
+}
+
+.menu-toggle:hover {
+  background: #7b2cbf;
+  box-shadow: 0 0 18px #c77dff;
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* -------------------- Navigation -------------------- */
 nav {
-  background: #5a189a;
+  background: rgba(90, 24, 154, 0.8);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  box-shadow: 0 2px 12px rgba(75, 0, 130, 0.3);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 nav a {
-  color: #fff;
+  color: #ffffff;
   padding: 14px 20px;
   text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-nav a:hover,
-nav a[aria-current="page"] {
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 50%;
+  bottom: 6px;
   background: #9d4edd;
-  transform: scale(1.05);
+  transition: all 0.3s ease;
+  border-radius: 3px;
 }
 
-/* ==================================================
-   Sections
-   ================================================== */
+nav a:hover::after,
+nav a[aria-current="page"]::after {
+  width: 60%;
+  left: 20%;
+}
+
+nav a:hover {
+  color: #d0aaff;
+}
+
+.site-nav.active {
+  flex-direction: column;
+  background: rgba(75, 0, 130, 0.96);
+  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.5);
+  padding: 10px 0;
+}
+
+/* -------------------- Sections -------------------- */
 section {
-  padding: 30px 15px;
+  padding: 40px 20px;
   max-width: 1100px;
   margin: auto;
-  animation: fadeUp 1.5s forwards;
+  animation: fadeUp 1.2s forwards;
 }
 
-/* ==================================================
-   Box Layout (Services, Index, Contact, Team)
-   ================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------- Box Layout -------------------- */
 .service-item,
 .card,
 .team-member,
 .demo-box {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  padding: 26px 24px;
-  margin: 28px auto;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.15);
+  padding: 28px 26px;
+  margin: 30px auto;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
+  border: 1px solid rgba(157, 78, 221, 0.1);
 }
 
 .service-item:hover,
 .card:hover,
 .team-member:hover,
 .demo-box:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(157, 78, 221, 0.35);
+  border-color: #c77dff;
 }
 
-/* Consistent spacing between stacked boxes */
-section .service-item + .service-item,
-section .card + .card,
-section .team-member + .team-member {
-  margin-top: 35px;
-}
-
-/* Uniform text styling inside boxes */
+/* -------------------- Typography -------------------- */
 .service-item h2,
 .service-item h3,
 .card h2,
 .card h3,
 .team-member h3 {
   color: #4b0082;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 6px rgba(157, 78, 221, 0.25);
 }
 
 .service-item p,
 .card p,
 .team-member p {
-  margin-bottom: 12px;
-  line-height: 1.6;
+  color: #2b2b2b;
+  margin-bottom: 10px;
 }
 
-/* ==================================================
-   Team Section Fix (Sean Image Scaling)
-   ================================================== */
+/* -------------------- Team Section -------------------- */
 .team-container {
   display: flex;
   flex-wrap: wrap;
@@ -130,78 +203,117 @@ section .team-member + .team-member {
   flex: 1 1 240px;
   max-width: 260px;
   text-align: center;
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
+  transition: all 0.3s ease;
   padding: 25px;
-  box-sizing: border-box;
+  border-radius: 14px;
+  min-height: 380px;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .team-member img {
   width: 200px;
-  height: auto;
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 200px;
   object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 18px rgba(157, 78, 221, 0.35);
+  transition: all 0.3s ease;
 }
 
-/* ==================================================
-   Buttons
-   ================================================== */
+.team-member img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+}
+
+.team-member h3 {
+  margin: 10px 0 6px;
+  font-size: 1.1rem;
+  color: #4b0082;
+}
+
+.team-member p {
+  font-size: 0.95rem;
+  color: #2b2b2b;
+}
+
+/* -------------------- Buttons -------------------- */
 button,
 .btn,
 .cta-btn {
-  background-color: #4b0082;
-  color: #fff;
+  background: linear-gradient(135deg, #4b0082, #9d4edd);
+  color: #ffffff;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 button:hover,
 .btn:hover,
 .cta-btn:hover {
-  background-color: #9d4edd;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #9d4edd, #c77dff);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(199, 125, 255, 0.6);
 }
 
-a.btn,
-a.cta-btn {
-  display: inline-block;
-  text-decoration: none;
+/* Button pulse effect */
+button::after,
+.btn::after,
+.cta-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
 }
 
-/* ==================================================
-   Inputs and Forms
-   ================================================== */
+button:active::after,
+.btn:active::after,
+.cta-btn:active::after {
+  width: 220%;
+  height: 220%;
+  opacity: 0;
+}
+
+/* -------------------- Inputs & Forms -------------------- */
 input,
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 6px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
+  margin-bottom: 14px;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
+  transition: all 0.3s ease;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
   border-color: #9d4edd;
+  box-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
 }
 
-/* ==================================================
-   Demos (Services Page)
-   ================================================== */
-.demo-box {
-  text-align: center;
-  margin-top: 20px;
-}
-
+/* -------------------- Demos (Services Page) -------------------- */
 .demo-box input {
   width: calc(50% - 10px);
   margin-right: 5px;
@@ -214,47 +326,43 @@ textarea:focus {
 .demo-result {
   margin-top: 10px;
   font-size: 0.95rem;
-  background-color: #f3ecfa;
+  background-color: rgba(240, 230, 255, 0.8);
   padding: 10px;
   border-radius: 6px;
-  border-left: 4px solid #4b0082;
+  border-left: 4px solid #7b2cbf;
   word-wrap: break-word;
 }
 
-/* ==================================================
-   Footer
-   ================================================== */
+/* -------------------- Footer -------------------- */
 footer {
-  background: linear-gradient(90deg, #4b0082, #5a189a);
-  color: #fff;
+  background: linear-gradient(90deg, #4b0082, #5a189a, #7b2cbf);
+  color: #ffffff;
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+  padding: 25px;
+  margin-top: 60px;
   font-size: 0.95rem;
+  position: relative;
+  box-shadow: 0 -4px 12px rgba(75, 0, 130, 0.4);
 }
 
-/* ==================================================
-   Animations
-   ================================================== */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #9d4edd, #c77dff);
+  box-shadow: 0 0 12px rgba(199, 125, 255, 0.6);
+}
+
+/* -------------------- Animations -------------------- */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==================================================
-   Responsive Adjustments
-   ================================================== */
+/* -------------------- Responsive -------------------- */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -273,10 +381,8 @@ footer {
     padding: 22px 18px;
   }
 
-  section .service-item + .service-item,
-  section .card + .card,
-  section .team-member + .team-member {
-    margin-top: 25px;
+  header img {
+    width: 140px;
   }
 
   .demo-box input {
@@ -284,7 +390,11 @@ footer {
     margin-bottom: 10px;
   }
 
-  header img {
-    width: 140px;
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn, button {
+    width: 100%;
   }
 }
