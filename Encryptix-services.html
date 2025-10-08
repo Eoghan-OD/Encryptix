@@ -22,48 +22,74 @@
         <a href="Encryptix-index.html#contact">Contact</a>
     </nav>
 
-    <!-- Services Page -->
+    <!-- Intro -->
     <section id="services">
         <h2>Our Services</h2>
         <p>
-            At Encryptix, our goal is to raise awareness of encryption’s role in cybersecurity and 
-            demonstrate how it protects sensitive data from unauthorised access.
+            At Encryptix, each team member focuses on a specific branch of encryption. 
+            Explore the examples below to see how each type of encryption or hashing works in practice.
         </p>
+    </section>
 
-        <div class="service-list">
-            <div class="service-item">
-                <h3>🔐 Encryption Strategy</h3>
-                <p>We explore effective encryption strategies for protecting confidential information in digital systems.</p>
-            </div>
-
-            <div class="service-item">
-                <h3>🧠 Awareness & Education</h3>
-                <p>We highlight the importance of encryption through simple demonstrations and awareness sessions.</p>
-            </div>
-
-            <div class="service-item">
-                <h3>💾 Data Security Demonstrations</h3>
-                <p>Our proof-of-concept showcases real encryption and decryption in action using basic hashing techniques.</p>
-            </div>
-
-            <div class="service-item">
-                <h3>🧰 Cybersecurity Guidance</h3>
-                <p>We provide insights into how encryption supports broader cybersecurity strategies and best practices.</p>
-            </div>
+    <!-- ===================== -->
+    <!-- Symmetric Encryption - Sean -->
+    <!-- ===================== -->
+    <section id="symmetric">
+        <h3>🔐 Symmetric Encryption (Sean)</h3>
+        <p>
+            Symmetric encryption uses the same key to encrypt and decrypt data. 
+            Try the demo below using a simple Caesar cipher technique.
+        </p>
+        <div class="demo-box">
+            <button onclick="demoSymmetric()">Run Demo</button>
+            <p id="symResult"></p>
         </div>
     </section>
 
-    <!-- Encryption Demo -->
-    <section id="demo">
-        <h2>Try Our Encryption Demo</h2>
+    <!-- ===================== -->
+    <!-- Asymmetric Encryption - Eoghan -->
+    <!-- ===================== -->
+    <section id="asymmetric">
+        <h3>🔑 Asymmetric Encryption (Eoghan)</h3>
         <p>
-            Enter a word below to see how a simple encryption algorithm works.  
-            The demo uses a <strong>Caesar cipher</strong> to shift characters by a chosen key value.
+            Asymmetric encryption uses two keys — a public key to encrypt and a private key to decrypt. 
+            This demo simulates the process conceptually.
         </p>
         <div class="demo-box">
-            <button onclick="encryptWord()">Encrypt a Word</button>
-            <p id="encryptedResult"></p>
-            <p id="decryptedResult"></p>
+            <button onclick="demoAsymmetric()">Run Demo</button>
+            <p id="asymResult"></p>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- Hashing - Bradley -->
+    <!-- ===================== -->
+    <section id="hashing">
+        <h3>🧮 Hashing (Bradley)</h3>
+        <p>
+            Hashing converts data into a fixed-length string of characters. 
+            It’s one-way — meaning it can’t be decrypted. This demo uses SHA-256 hashing.
+        </p>
+        <div class="demo-box">
+            <input type="text" id="hashInput" placeholder="Enter text to hash">
+            <button onclick="demoHashing()">Generate Hash</button>
+            <p id="hashResult"></p>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- Hybrid Encryption - Vitalina -->
+    <!-- ===================== -->
+    <section id="hybrid">
+        <h3>⚡ Hybrid Encryption (Vitalina)</h3>
+        <p>
+            Hybrid encryption combines asymmetric and symmetric methods. 
+            A symmetric key encrypts the message, and an asymmetric key encrypts that key. 
+            This demo simulates the workflow.
+        </p>
+        <div class="demo-box">
+            <button onclick="demoHybrid()">Run Demo</button>
+            <p id="hybridResult"></p>
         </div>
     </section>
 
@@ -72,47 +98,72 @@
         <p>&copy; 2025 Encryptix Consultancy. All rights reserved. | Supervised by Hristo Trifonov</p>
     </footer>
 
-    <!-- JavaScript Encryption Demo -->
+    <!-- ===================== -->
+    <!-- JavaScript Demos -->
+    <!-- ===================== -->
     <script>
-        // Simple Caesar cipher for demonstration purposes
+        // === Symmetric Encryption (Caesar cipher) ===
         function caesarEncrypt(text, key) {
-            let result = '';
-            for (let i = 0; i < text.length; i++) {
-                let char = text.charCodeAt(i);
-                // Only shift letters (A-Z, a-z)
-                if (char >= 65 && char <= 90) {
-                    result += String.fromCharCode(((char - 65 + key) % 26) + 65);
-                } else if (char >= 97 && char <= 122) {
-                    result += String.fromCharCode(((char - 97 + key) % 26) + 97);
-                } else {
-                    result += text.charAt(i);
-                }
-            }
-            return result;
+            return text.split('').map(ch => {
+                const code = ch.charCodeAt(0);
+                if (code >= 65 && code <= 90)
+                    return String.fromCharCode(((code - 65 + key) % 26) + 65);
+                if (code >= 97 && code <= 122)
+                    return String.fromCharCode(((code - 97 + key) % 26) + 97);
+                return ch;
+            }).join('');
         }
 
-        function caesarDecrypt(text, key) {
-            return caesarEncrypt(text, 26 - key);
-        }
-
-        function encryptWord() {
+        function demoSymmetric() {
             const word = prompt("Enter a word to encrypt:");
-            if (!word) return;
-
             const key = parseInt(prompt("Enter a key (1-25):"), 10);
-            if (isNaN(key) || key < 1 || key > 25) {
-                alert("Invalid key. Please enter a number between 1 and 25.");
-                return;
-            }
-
+            if (!word || isNaN(key)) return alert("Invalid input.");
             const encrypted = caesarEncrypt(word, key);
-            const decrypted = caesarDecrypt(encrypted, key);
+            const decrypted = caesarEncrypt(encrypted, 26 - key);
+            document.getElementById("symResult").innerHTML =
+                `<strong>Encrypted:</strong> ${encrypted}<br><strong>Decrypted:</strong> ${decrypted}`;
+        }
 
-            document.getElementById("encryptedResult").innerHTML = 
-                `<strong>Encrypted Word:</strong> ${encrypted}`;
+        // === Asymmetric Encryption (Simulated) ===
+        function demoAsymmetric() {
+            const message = prompt("Enter a message to encrypt with a public key:");
+            if (!message) return;
+            const publicKey = Math.floor(Math.random() * 9999) + 1000;
+            const privateKey = publicKey + 3; // just a symbolic relation
+            const encrypted = btoa(message + publicKey);
+            const decrypted = atob(encrypted).replace(publicKey, "");
+            document.getElementById("asymResult").innerHTML =
+                `<strong>Public Key:</strong> ${publicKey}<br>
+                 <strong>Private Key:</strong> ${privateKey}<br>
+                 <strong>Encrypted:</strong> ${encrypted}<br>
+                 <strong>Decrypted:</strong> ${decrypted}`;
+        }
 
-            document.getElementById("decryptedResult").innerHTML = 
-                `<strong>Decrypted (using key ${key}):</strong> ${decrypted}`;
+        // === Hashing using SHA-256 ===
+        async function demoHashing() {
+            const text = document.getElementById("hashInput").value;
+            if (!text) return alert("Enter text to hash!");
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            document.getElementById("hashResult").innerHTML = `<strong>SHA-256 Hash:</strong><br>${hashHex}`;
+        }
+
+        // === Hybrid Encryption (Simulated) ===
+        function demoHybrid() {
+            const message = prompt("Enter a message to encrypt (hybrid):");
+            if (!message) return;
+            const symmetricKey = Math.floor(Math.random() * 25) + 1;
+            const encryptedMsg = caesarEncrypt(message, symmetricKey);
+            const asymmetricKey = Math.floor(Math.random() * 9999) + 1000;
+            const encryptedKey = btoa(symmetricKey + asymmetricKey);
+            document.getElementById("hybridResult").innerHTML =
+                `<strong>Original Message:</strong> ${message}<br>
+                 <strong>Symmetric Key:</strong> ${symmetricKey}<br>
+                 <strong>Encrypted Message:</strong> ${encryptedMsg}<br>
+                 <strong>Encrypted Key (Asymmetric):</strong> ${encryptedKey}`;
         }
     </script>
 </body>

@@ -233,3 +233,50 @@ footer {
     margin-top: 15px;
     font-size: 1.1rem;
 }
+
+/* Encryption Examples Styling */
+#symmetric, #asymmetric, #hashing, #hybrid {
+    background-color: #f0e6fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#symmetric h3, #asymmetric h3, #hashing h3, #hybrid h3 {
+    color: #4b0082;
+    margin-bottom: 10px;
+}
+
+.demo-box {
+    margin-top: 15px;
+}
+
+.demo-box input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 60%;
+    margin-right: 10px;
+}
+
+.demo-box button {
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.demo-box button:hover {
+    background-color: #9d4edd;
+    transform: scale(1.05);
+}
+
+.demo-box p {
+    margin-top: 10px;
+    font-size: 1.05rem;
+}
