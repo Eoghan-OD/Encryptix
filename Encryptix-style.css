@@ -1,0 +1,235 @@
+/* =======================================
+   General Page Styling
+   ======================================= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f8f6fb;
+    color: #2c2c2c;
+}
+
+/* =======================================
+   Header
+   ======================================= */
+header {
+    background: #4b0082; /* Deep purple */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+}
+
+header img {
+    width: 220px;
+    margin-bottom: 15px;
+}
+
+/* =======================================
+   Navigation Bar
+   ======================================= */
+nav {
+    background: #5a189a;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #fff;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background: #9d4edd;
+    transform: scale(1.1);
+}
+
+/* =======================================
+   Sections
+   ======================================= */
+section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    opacity: 0;
+    animation: fadeUp 1.5s forwards;
+}
+
+/* Headings */
+h2 {
+    color: #5a189a;
+}
+
+/* =======================================
+   Footer
+   ======================================= */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #4b0082;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* =======================================
+   Animations
+   ======================================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================================
+   Clientele Section (About Us)
+   ======================================= */
+.clientele {
+    background-color: #f0e6fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.clientele h3 {
+    color: #4b0082;
+    margin-bottom: 10px;
+}
+
+.clientele ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1rem;
+}
+
+.clientele li {
+    margin-bottom: 8px;
+}
+
+/* =======================================
+   Team Page – "Meet the Team"
+   ======================================= */
+#who-we-are {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0e6fa;
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 1 1 220px;
+    max-width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    animation: fadeUp 1.5s forwards;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-member img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.team-member h3 {
+    color: #4b0082;
+    margin-bottom: 10px;
+}
+
+/* =======================================
+   Services Page
+   ======================================= */
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.service-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeUp 1.5s forwards;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.service-item h3 {
+    color: #4b0082;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 0.95rem;
+}
+
+/* =======================================
+   Encryption Demo (Services Page)
+   ======================================= */
+#demo {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0e6fa;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+.demo-box {
+    margin-top: 20px;
+}
+
+#demo button {
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#demo button:hover {
+    background-color: #9d4edd;
+    transform: scale(1.05);
+}
+
+#encryptedResult, #decryptedResult {
+    margin-top: 15px;
+    font-size: 1.1rem;
+}

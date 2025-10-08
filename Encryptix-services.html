@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryptix - Our Services</title>
+    <link rel="stylesheet" href="Encryptix-style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="encryptix-pixtures/EncryptixLogo.png" alt="Encryptix Logo">
+        <h1>Encryptix</h1>
+        <p>Specialists in Cryptography and Encryption</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="Encryptix-index.html">Home</a>
+        <a href="Encryptix-services.html">Services</a>
+        <a href="Encryptix-who.html">Meet the Team</a>
+        <a href="Encryptix-index.html#contact">Contact</a>
+    </nav>
+
+    <!-- Services Page -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>
+            At Encryptix, our goal is to raise awareness of encryption’s role in cybersecurity and 
+            demonstrate how it protects sensitive data from unauthorised access.
+        </p>
+
+        <div class="service-list">
+            <div class="service-item">
+                <h3>🔐 Encryption Strategy</h3>
+                <p>We explore effective encryption strategies for protecting confidential information in digital systems.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>🧠 Awareness & Education</h3>
+                <p>We highlight the importance of encryption through simple demonstrations and awareness sessions.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>💾 Data Security Demonstrations</h3>
+                <p>Our proof-of-concept showcases real encryption and decryption in action using basic hashing techniques.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>🧰 Cybersecurity Guidance</h3>
+                <p>We provide insights into how encryption supports broader cybersecurity strategies and best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Encryption Demo -->
+    <section id="demo">
+        <h2>Try Our Encryption Demo</h2>
+        <p>
+            Enter a word below to see how a simple encryption algorithm works.  
+            The demo uses a <strong>Caesar cipher</strong> to shift characters by a chosen key value.
+        </p>
+        <div class="demo-box">
+            <button onclick="encryptWord()">Encrypt a Word</button>
+            <p id="encryptedResult"></p>
+            <p id="decryptedResult"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Encryptix Consultancy. All rights reserved. | Supervised by Hristo Trifonov</p>
+    </footer>
+
+    <!-- JavaScript Encryption Demo -->
+    <script>
+        // Simple Caesar cipher for demonstration purposes
+        function caesarEncrypt(text, key) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                let char = text.charCodeAt(i);
+                // Only shift letters (A-Z, a-z)
+                if (char >= 65 && char <= 90) {
+                    result += String.fromCharCode(((char - 65 + key) % 26) + 65);
+                } else if (char >= 97 && char <= 122) {
+                    result += String.fromCharCode(((char - 97 + key) % 26) + 97);
+                } else {
+                    result += text.charAt(i);
+                }
+            }
+            return result;
+        }
+
+        function caesarDecrypt(text, key) {
+            return caesarEncrypt(text, 26 - key);
+        }
+
+        function encryptWord() {
+            const word = prompt("Enter a word to encrypt:");
+            if (!word) return;
+
+            const key = parseInt(prompt("Enter a key (1-25):"), 10);
+            if (isNaN(key) || key < 1 || key > 25) {
+                alert("Invalid key. Please enter a number between 1 and 25.");
+                return;
+            }
+
+            const encrypted = caesarEncrypt(word, key);
+            const decrypted = caesarDecrypt(encrypted, key);
+
+            document.getElementById("encryptedResult").innerHTML = 
+                `<strong>Encrypted Word:</strong> ${encrypted}`;
+
+            document.getElementById("decryptedResult").innerHTML = 
+                `<strong>Decrypted (using key ${key}):</strong> ${decrypted}`;
+        }
+    </script>
+</body>
+</html>
