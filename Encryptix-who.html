@@ -1,77 +1,79 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Encryptix - Meet the Team</title>
-  <meta name="description" content="The Encryptix team at MTU focusing on practical encryption for veterinary clinics.">
-  <link rel="stylesheet" href="Encryptix-style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet the Team - Encryptix</title>
+  <meta name="description" content="Meet the Encryptix team, a group of MTU students helping local veterinary clinics understand cybersecurity and encryption.">
+
+  <meta property="og:title" content="Meet the Team - Encryptix">
+  <meta property="og:description" content="The Encryptix team focuses on raising cybersecurity awareness for Irish veterinary practices.">
+  <meta property="og:image" content="encryptix-pixtures/EncryptixLogo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://encryptix.ie/Encryptix-who.html">
+
+  <link rel="icon" type="image/png" href="encryptix-pixtures/EncryptixLogo.png">
+  <link rel="stylesheet" href="Encryptix-style.css" />
 </head>
 <body>
   <!-- Header -->
   <header class="site-header" role="banner">
-    <img src="encryptix-pixtures/EncryptixLogo.png" alt="Encryptix logo">
+    <a href="Encryptix-index.html">
+      <img src="encryptix-pixtures/EncryptixLogo.png" alt="Encryptix logo" width="160" loading="lazy">
+    </a>
     <h1>Encryptix</h1>
-    <p>Practical encryption for local veterinary clinics</p>
+    <p>Cybersecurity and encryption awareness for veterinary clinics</p>
   </header>
 
   <!-- Navigation -->
-  <nav class="site-nav" aria-label="Main">
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+  <nav class="site-nav" aria-label="Main site navigation">
     <a href="Encryptix-index.html">Home</a>
     <a href="Encryptix-services.html">Services</a>
     <a href="Encryptix-who.html" aria-current="page">Meet the Team</a>
-    <a href="Encryptix-index.html#contact">Contact</a>
+    <a href="Encryptix-contact.html">Contact</a>
   </nav>
 
-  <!-- Team -->
-  <section id="who-we-are">
-    <h2>Meet the Team</h2>
+  <!-- Team Section -->
+  <section>
+    <div class="service-item">
+      <h2>Meet Our Team</h2>
+      <p>
+        The Encryptix team is made up of four third-year IT and Cybersecurity students from Munster Technological University. 
+        Together, we focus on helping local veterinary clinics understand how encryption can protect their systems and client data.
+      </p>
+    </div>
+
     <div class="team-container">
-      <!-- Sean -->
-      <div class="team-member">
-        <img src="encryptix-pixtures/sean.jpg" alt="Photo of Sean Foran">
+      <div class="service-item">
+        <img src="encryptix-pixtures/sean.jpg" alt="Sean Foran" loading="lazy">
         <h3>Sean Foran</h3>
-        <p>
-          Focus: symmetric encryption and practical rollouts. Sean turns the demos into steps a clinic can follow.
-          He focuses on realistic examples, simple key management, and clear setup guidance.
-        </p>
+        <p>IT and Cybersecurity student with a strong interest in encryption and systems security.</p>
       </div>
 
-      <!-- Eoghan -->
-      <div class="team-member">
-        <img src="encryptix-pixtures/eoghan.png" alt="Photo of Eoghan O'Donovan">
+      <div class="service-item">
+        <img src="encryptix-pixtures/eoghan.png" alt="Eoghan O'Donovan" loading="lazy">
         <h3>Eoghan O'Donovan</h3>
-        <p>
-          Focus: backend systems and encryption demos. Eoghan ensures the site’s encryption tools and infrastructure run smoothly,
-          supporting both the frontend and user interactions to keep everything consistent and functional.
-        </p>
+        <p>Cybersecurity student focusing on network protection and practical encryption techniques.</p>
       </div>
 
-      <!-- Bradley -->
-      <div class="team-member">
-        <img src="encryptix-pixtures/bradley.png" alt="Photo of Bradley Neville">
+      <div class="service-item">
+        <img src="encryptix-pixtures/bradley.png" alt="Bradley Neville" loading="lazy">
         <h3>Bradley Neville</h3>
-        <p>
-          Focus: hashing, integrity checks, and report development. Bradley manages how encryption concepts are explained in the documentation,
-          ensuring technical clarity and professionalism across the written material and final report.
-        </p>
+        <p>Student passionate about data protection and the importance of secure information handling.</p>
       </div>
 
-      <!-- Vitalina -->
-      <div class="team-member">
-        <img src="encryptix-pixtures/vitalina.png" alt="Photo of Vitalina">
+      <div class="service-item">
+        <img src="encryptix-pixtures/vitalina.png" alt="Vitalina" loading="lazy">
         <h3>Vitalina</h3>
-        <p>
-          Focus: hybrid encryption and communication design. Vitalina coordinates the project presentation and ensures the visual layout,
-          structure, and key messages are engaging and easy to understand for clients and assessors.
-        </p>
+        <p>IT and Cybersecurity student interested in secure infrastructure and applied encryption.</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>© 2025 Encryptix Consultancy. All rights reserved. Supervised by Hristo Trifonov.</p>
+    <p>© 2025 Encryptix Project. All rights reserved. Supervised by Hristo Trifonov.</p>
   </footer>
 
   <script src="Encryptix-scripts.js"></script>

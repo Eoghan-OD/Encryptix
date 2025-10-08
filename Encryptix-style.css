@@ -1,223 +1,290 @@
 /* ==================================================
-   Base
+   General Styling
    ================================================== */
-:root {
-  --purple: #4b0082;
-  --purple-2: #5a189a;
-  --purple-3: #9d4edd;
-  --ink: #2c2c2c;
-  --bg: #f8f6fb;
-  --panel: #f0e6fa;
-  --white: #fff;
-}
-
-* { box-sizing: border-box; }
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  color: var(--ink);
-  background: var(--bg);
-  line-height: 1.6;
-}
-
-/* Utility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  border: 0;
+  line-height: 1.6;
+  background-color: #f8f6fb;
+  color: #2c2c2c;
 }
-
-.btn {
-  display: inline-block;
-  background: var(--purple);
-  color: var(--white);
-  text-decoration: none;
-  padding: 12px 18px;
-  border-radius: 10px;
-  transition: transform .2s ease, background .3s ease;
-}
-.btn:hover { transform: scale(1.03); background: var(--purple-3); }
 
 /* ==================================================
-   Header
+   Header (Animated Gradient)
    ================================================== */
-.site-header {
-  background: var(--purple);
-  color: var(--white);
+header {
+  background: linear-gradient(270deg, #4b0082, #5a189a, #9d4edd);
+  background-size: 600% 600%;
+  color: #fff;
   text-align: center;
-  padding: 24px 12px;
-  animation: fadeIn 1s ease-in;
+  padding: 25px 0;
+  animation: gradientShift 8s ease infinite, fadeIn 2s ease-in;
 }
-.site-header img {
-  width: 200px;
-  height: auto;
+
+header img {
+  width: 180px;
   margin-bottom: 10px;
+}
+
+/* Animated gradient effect */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ==================================================
    Navigation
    ================================================== */
-.site-nav {
-  background: var(--purple-2);
+nav {
+  background: #5a189a;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 4px;
 }
-.site-nav a {
-  color: var(--white);
-  font-weight: bold;
+
+nav a {
+  color: #fff;
+  padding: 14px 20px;
   text-decoration: none;
-  padding: 12px 18px;
-  transition: background .3s ease, transform .2s ease;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
-.site-nav a[aria-current="page"] { text-decoration: underline; }
-.site-nav a:hover { background: var(--purple-3); transform: scale(1.07); }
+
+nav a:hover,
+nav a[aria-current="page"] {
+  background: #9d4edd;
+  transform: scale(1.05);
+}
 
 /* ==================================================
    Sections
    ================================================== */
 section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px 16px;
-  opacity: 0;
-  animation: fadeUp 0.8s forwards;
-}
-h2 { color: var(--purple-2); margin-top: 0; }
-
-/* Hero */
-.hero {
-  background: var(--panel);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  padding: 30px 15px;
+  max-width: 1100px;
+  margin: auto;
+  animation: fadeUp 1.5s forwards;
 }
 
-/* Clientele box */
-.clientele {
-  background: var(--panel);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 18px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+/* ==================================================
+   Box Layout (Services, Index, Contact, Team)
+   ================================================== */
+.service-item,
+.card,
+.team-member,
+.demo-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 26px 24px;
+  margin: 28px auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.clientele h3 { color: var(--purple); margin: 0 0 8px; }
-.clientele ul { margin: 0; padding-left: 16px; }
 
-/* Team */
-#who-we-are {
-  background: var(--panel);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+.service-item:hover,
+.card:hover,
+.team-member:hover,
+.demo-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
+
+/* Consistent spacing between stacked boxes */
+section .service-item + .service-item,
+section .card + .card,
+section .team-member + .team-member {
+  margin-top: 35px;
+}
+
+/* Uniform text styling inside boxes */
+.service-item h2,
+.service-item h3,
+.card h2,
+.card h3,
+.team-member h3 {
+  color: #4b0082;
+  margin-bottom: 15px;
+}
+
+.service-item p,
+.card p,
+.team-member p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* ==================================================
+   Team Section Fix (Sean Image Scaling)
+   ================================================== */
 .team-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
   justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
 }
+
 .team-member {
-  background: var(--white);
-  width: 250px;
-  padding: 18px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  transition: transform .2s ease;
+  flex: 1 1 240px;
+  max-width: 260px;
+  text-align: center;
+  padding: 25px;
+  box-sizing: border-box;
 }
-.team-member:hover { transform: scale(1.03); }
+
 .team-member img {
-  width: 100%;
+  width: 200px;
   height: auto;
+  max-width: 100%;
   border-radius: 10px;
-  display: block;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
-.team-member h3 { color: var(--purple); margin: 6px 0 8px; }
 
-/* Services cards */
-.service-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin-top: 10px;
-}
-.service-item {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.service-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,.18);
-}
-.service-item h3 { color: var(--purple); margin: 6px 0 8px; }
-
-/* Demo sections */
-#demo,
-#symmetric,
-#asymmetric,
-#hashing,
-#hybrid {
-  background: var(--panel);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-}
-.demo-box {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-.demo-box input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  min-width: 220px;
-}
-.demo-box button {
-  background: var(--purple);
-  color: var(--white);
-  border: 0;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform .2s ease, background .3s ease;
-}
-.demo-box button:hover { transform: scale(1.03); background: var(--purple-3); }
-.demo-box p { margin: 8px 0 0; font-size: 1.02rem; word-break: break-word; }
-
-/* Reset */
-#reset-section { text-align: center; }
-#reset-btn {
-  background: var(--purple);
-  color: var(--white);
-  border: 0;
+/* ==================================================
+   Buttons
+   ================================================== */
+button,
+.btn,
+.cta-btn {
+  background-color: #4b0082;
+  color: #fff;
+  border: none;
   padding: 12px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform .2s ease, background .3s ease;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-#reset-btn:hover { transform: scale(1.03); background: var(--purple-3); }
 
-/* Footer */
-.site-footer {
-  text-align: centre;
-  text-align: center; /* keep standard spelling for browsers */
-  background: var(--purple);
-  color: var(--white);
-  padding: 16px;
+button:hover,
+.btn:hover,
+.cta-btn:hover {
+  background-color: #9d4edd;
+  transform: scale(1.05);
+}
+
+a.btn,
+a.cta-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* ==================================================
+   Inputs and Forms
+   ================================================== */
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #9d4edd;
+}
+
+/* ==================================================
+   Demos (Services Page)
+   ================================================== */
+.demo-box {
+  text-align: center;
   margin-top: 20px;
 }
 
-/* Animations */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.demo-box input {
+  width: calc(50% - 10px);
+  margin-right: 5px;
+}
+
+.demo-box button {
+  margin: 5px 5px 10px 0;
+}
+
+.demo-result {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  background-color: #f3ecfa;
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 4px solid #4b0082;
+  word-wrap: break-word;
+}
+
+/* ==================================================
+   Footer
+   ================================================== */
+footer {
+  background: linear-gradient(90deg, #4b0082, #5a189a);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.95rem;
+}
+
+/* ==================================================
+   Animations
+   ================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================================================
+   Responsive Adjustments
+   ================================================== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item,
+  .card,
+  .team-member {
+    margin: 20px 12px;
+    padding: 22px 18px;
+  }
+
+  section .service-item + .service-item,
+  section .card + .card,
+  section .team-member + .team-member {
+    margin-top: 25px;
+  }
+
+  .demo-box input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  header img {
+    width: 140px;
+  }
+}
