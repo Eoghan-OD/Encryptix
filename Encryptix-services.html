@@ -4,29 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Encryptix - Encryption Demos for Veterinary Clinics</title>
-  <meta name="description" content="Explore the Encryptix encryption demos designed to raise cybersecurity awareness for local veterinary clinics.">
-
-  <meta property="og:title" content="Encryptix - Encryption Demos for Veterinary Clinics">
-  <meta property="og:description" content="See interactive demos created by Encryptix to help veterinary practices understand encryption and data protection.">
-  <meta property="og:image" content="encryptix-pixtures/EncryptixLogo.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://encryptix.ie/Encryptix-services.html">
+  <meta name="description" content="Explore Encryptix's interactive encryption demos to understand key cybersecurity techniques.">
 
   <link rel="icon" type="image/png" href="encryptix-pixtures/EncryptixLogo.png">
   <link rel="stylesheet" href="Encryptix-style.css" />
-  <style>
-    .demo-result, #asym-keys {
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      max-height: 200px;
-      overflow-y: auto;
-      background: rgba(0,0,0,0.03);
-      padding: 6px;
-      border-radius: 4px;
-    }
-  </style>
 </head>
 <body>
   <!-- Header -->
@@ -52,76 +33,35 @@
     <div class="service-item">
       <h2>Our Encryption Demonstrations</h2>
       <p>
-        The Encryptix team created these interactive demos to help veterinary clinics see how different types of encryption work in practice. 
-        Each demonstration represents one of the key techniques used to secure information in modern systems.
+        Explore how encryption protects sensitive information in veterinary practices. Each demo illustrates a key concept of data protection.
       </p>
     </div>
-  </section>
 
-  <!-- Demos Section -->
-  <section>
+    <!-- Grid of Demo Links -->
     <div class="service-list">
-
-      <!-- Symmetric Encryption -->
       <div class="service-item">
-        <h3>Symmetric Encryption (Sean)</h3>
-        <p>Uses one shared key to both encrypt and decrypt information. This demo shows a simple Caesar cipher in action.</p>
-        <div class="demo-box">
-          <input id="sym-text" type="text" placeholder="Enter message">
-          <input id="sym-key" type="number" min="1" max="25" placeholder="Key (1-25)">
-          <button id="sym-encrypt">Encrypt</button>
-          <button id="sym-decrypt">Decrypt</button>
-          <div class="progress-bar" id="sym-progress"></div>
-          <p id="sym-result" class="demo-result"></p>
-        </div>
+        <h3>Symmetric Encryption</h3>
+        <p>Uses a single shared key for encryption and decryption. Ideal for fast, secure communication within a practice.</p>
+        <a href="Encryptix-symmetric.html" class="btn">View Demo</a>
       </div>
 
-      <!-- Asymmetric Encryption -->
       <div class="service-item">
-        <h3>Asymmetric Encryption (Eoghan)</h3>
-        <p>Uses a public key for encryption and a private key for decryption. This demo shows the concept of RSA-style key exchange.</p>
-        <div class="demo-box">
-          <input id="asym-text" type="text" placeholder="Enter message">
-          <button id="asym-generate">Generate Keys</button>
-          <button id="asym-encrypt">Encrypt</button>
-          <button id="asym-decrypt">Decrypt</button>
-          <div class="progress-bar" id="asym-progress"></div>
-          <p id="asym-keys"></p>
-          <p id="asym-result" class="demo-result"></p>
-        </div>
+        <h3>Asymmetric Encryption</h3>
+        <p>Employs public and private key pairs for secure information exchange — essential for secure client communications.</p>
+        <a href="Encryptix-asymmetric.html" class="btn">View Demo</a>
       </div>
 
-      <!-- Hashing -->
       <div class="service-item">
-        <h3>Hashing (Bradley)</h3>
-        <p>Hashing converts text into a fixed-length, irreversible value. It is used to protect passwords and verify data integrity.</p>
-        <div class="demo-box">
-          <input id="hash-input" type="text" placeholder="Enter text to hash">
-          <button id="hash-generate">Generate SHA-256</button>
-          <button id="hash-verify">Verify Text Against Hash</button>
-          <div class="progress-bar" id="hash-progress"></div>
-          <p id="hash-result" class="demo-result"></p>
-        </div>
+        <h3>Hashing</h3>
+        <p>Transforms data into fixed-length values to protect passwords and verify integrity without storing plain text data.</p>
+        <a href="Encryptix-hashing.html" class="btn">View Demo</a>
       </div>
 
-      <!-- Hybrid Encryption -->
       <div class="service-item">
-        <h3>Hybrid Encryption (Vitalina)</h3>
-        <p>Combines symmetric and asymmetric encryption. The message is encrypted with a symmetric key, which is then protected using an asymmetric key.</p>
-        <div class="demo-box">
-          <input id="hybrid-text" type="text" placeholder="Enter message">
-          <button id="hybrid-run">Encrypt (Hybrid)</button>
-          <button id="hybrid-decrypt">Decrypt</button>
-          <div class="progress-bar" id="hybrid-progress"></div>
-          <p id="hybrid-result" class="demo-result"></p>
-        </div>
+        <h3>Hybrid Encryption</h3>
+        <p>Combines the strengths of symmetric and asymmetric encryption for both speed and security.</p>
+        <a href="Encryptix-hybrid.html" class="btn">View Demo</a>
       </div>
-
-    </div>
-
-    <!-- Reset Button -->
-    <div id="reset-section" style="margin-top:40px;">
-      <button id="reset-btn">Reset All Demos</button>
     </div>
   </section>
 
