@@ -280,3 +280,24 @@ footer {
     margin-top: 10px;
     font-size: 1.05rem;
 }
+/* Reset All Demos Section */
+#reset-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#resetBtn {
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#resetBtn:hover {
+    background-color: #9d4edd;
+    transform: scale(1.05);
+}
