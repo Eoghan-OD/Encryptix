@@ -1,73 +1,85 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encryptix - Cybersecurity Consultancy</title>
-    <link rel="stylesheet" href="Encryptix-style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encryptix - Cybersecurity for Veterinary Clinics</title>
+  <meta name="description" content="Encryptix helps Irish veterinary clinics protect patient data, practice systems, and communications with practical encryption and cyber hygiene.">
+  <link rel="stylesheet" href="Encryptix-style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <img src="encryptix-pixtures/EncryptixLogo.png" alt="Encryptix Logo">
-        <h1>Encryptix</h1>
-        <p>Specialists in Cryptography and Encryption</p>
-    </header>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <img src="encryptix-pixtures/EncryptixLogo.png" alt="Encryptix logo">
+    <h1>Encryptix</h1>
+    <p>Practical encryption for local veterinary clinics</p>
+  </header>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="Encryptix-index.html">Home</a>
-        <a href="Encryptix-services.html">Services</a>
-        <a href="Encryptix-who.html">Meet the Team</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main">
+    <a href="Encryptix-index.html" aria-current="page">Home</a>
+    <a href="Encryptix-services.html">Services</a>
+    <a href="Encryptix-who.html">Meet the Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <!-- About section -->
-    <section id="about">
-        <h2>About Us</h2>
-        <p>
-            We are <strong>Bradley, Sean, Vitalina, and Eoghan</strong>, a group of third-year students 
-            studying Information Technology and Cybersecurity at MTU. 
-            This project, supervised by <strong>Hristo Trifonov</strong>, explores how cryptography and encryption 
-            contribute to modern cybersecurity practices.
-        </p>
-        <p>
-            Our goal is to raise awareness of the importance of data protection and secure communications. 
-            Through this project, we demonstrate how encryption can help protect organisations and individuals 
-            from cyber threats.
-        </p>
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Keep your clinic data safe and compliant</h2>
+    <p>
+      We help small and medium veterinary practices protect client records, imaging and lab data, and day to day communications.
+      Our focus is simple setups that your team can actually use.
+    </p>
+  </section>
 
-        <!-- New Clientele Section -->
-        <div class="clientele">
-            <h3>Planned Clientele – Irish Companies</h3>
-            <ul>
-                <li><strong>Healthcare:</strong> HSE</li>
-                <li><strong>Travel Services:</strong> Ryanair, Iarnród Éireann</li>
-                <li><strong>Banks:</strong> Bank of Ireland, AIB, PTSB</li>
-                <li><strong>Universities:</strong> MTU</li>
-            </ul>
-        </div>
-    </section>
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Encryptix is a cybersecurity consultancy focused on helping veterinary clinics strengthen their data protection and communication security through practical encryption. 
+      We design simple, cost-effective solutions that fit existing clinic systems without disrupting daily workflows.
+    </p>
+    <p>
+      Our work covers implementing secure backups, encrypting sensitive files, improving email safety, and delivering clear, hands-on training to clinic staff. 
+      We also maintain interactive encryption demos and backend systems that show how different cryptographic methods can protect patient and client data.
+    </p>
 
-    <!-- Proof of Concept section -->
-    <section id="poc">
-        <h2>Proof of Concept</h2>
-        <p>
-            We provide practical demonstrations of encryption and decryption processes, 
-            showing how robust cryptographic methods can defend data against cyber threats.
-        </p>
-    </section>
+    <!-- Client focus -->
+    <div class="clientele" aria-labelledby="clientele-title">
+      <h3 id="clientele-title">Who we help</h3>
+      <ul>
+        <li><strong>Independent small animal clinics</strong> needing simple encrypted backups and safer email.</li>
+        <li><strong>Mixed practices</strong> that share imaging and lab files across rooms or sites.</li>
+        <li><strong>Emergency and referral partners</strong> that exchange client records with outside clinics.</li>
+        <li><strong>Multi site practices</strong> improving secure file sharing and access control.</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Contact section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:info@encryptix.ie">info@encryptix.ie</a></p>
-        <p>Telephone: +353 1 234 5678</p>
-    </section>
+  <!-- Proof of Concept -->
+  <section id="poc">
+    <h2>Proof of Concept</h2>
+    <p>
+      Try our browser based demos on the Services page. They show symmetric, asymmetric, hashing, and hybrid ideas in a friendly way that maps to clinic tasks like sharing X ray notes or exporting reports.
+    </p>
+    <p>
+      These are learning tools, not production crypto. We use them to explain why proper keys, backups, and access rules matter.
+    </p>
+    <a class="btn" href="Encryptix-services.html">Open the demos</a>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Encryptix Consultancy. All rights reserved. | Supervised by Hristo Trifonov</p>
-    </footer>
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:info@encryptix.ie">info@encryptix.ie</a></p>
+    <p>Telephone: +353 1 234 5678</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Encryptix Consultancy. All rights reserved. Supervised by Hristo Trifonov.</p>
+  </footer>
+
+  <script src="Encryptix-scripts.js"></script>
 </body>
 </html>

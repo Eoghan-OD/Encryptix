@@ -1,77 +1,143 @@
-// ===============================
-// Encryptix JavaScript Functions
-// ===============================
+/* ==================================================
+   Encryptix demo scripts
+   Simple, readable code for teaching purposes
+   ================================================== */
 
-// --- Symmetric Encryption (Caesar Cipher - Sean) ---
-function caesarEncrypt(text, key) {
-    return text.split('').map(ch => {
-        const code = ch.charCodeAt(0);
-        if (code >= 65 && code <= 90)
-            return String.fromCharCode(((code - 65 + key) % 26) + 65);
-        if (code >= 97 && code <= 122)
-            return String.fromCharCode(((code - 97 + key) % 26) + 97);
-        return ch;
-    }).join('');
+/* Short helpers */
+const $ = (id) => document.getElementById(id);
+const text = (id, value = "") => { const el = $(id); if (el) el.textContent = value; };
+
+/* Attach events once DOM is ready */
+document.addEventListener("DOMContentLoaded", () => {
+  // Symmetric demo
+  $("sym-encrypt")?.addEventListener("click", () => {
+    const msg = $("sym-text").value || "";
+    const k = clampKey($("sym-key").value);
+    text("sym-result", msg ? `Encrypted: ${caesar(msg, k)}` : "Enter a message and key.");
+  });
+
+  $("sym-decrypt")?.addEventListener("click", () => {
+    const msg = $("sym-text").value || "";
+    const k = clampKey($("sym-key").value);
+    text("sym-result", msg ? `Decrypted: ${caesar(msg, 26 - k)}` : "Enter a message and key.");
+  });
+
+  // Asymmetric demo
+  let demoKeys = null;
+  $("asym-generate")?.addEventListener("click", () => {
+    demoKeys = generateToyKeyPair();
+    text("asym-keys", `Public: ${demoKeys.public}  Private: ${demoKeys.private}`);
+    text("asym-result", "");
+  });
+
+  $("asym-encrypt")?.addEventListener("click", () => {
+    const msg = $("asym-text").value || "";
+    if (!demoKeys) { text("asym-result", "Generate keys first."); return; }
+    const cipher = encryptWithPublic(msg, demoKeys.public);
+    text("asym-result", `Encrypted: ${cipher}`);
+  });
+
+  $("asym-decrypt")?.addEventListener("click", () => {
+    const msg = $("asym-text").value || "";
+    if (!demoKeys) { text("asym-result", "Generate keys first."); return; }
+    const plain = decryptWithPrivate(msg, demoKeys.private);
+    text("asym-result", `Decrypted: ${plain}`);
+  });
+
+  // Hashing demo
+  $("hash-generate")?.addEventListener("click", async () => {
+    const input = $("hash-input").value || "";
+    if (!input) { text("hash-result", "Enter text to hash."); return; }
+    const digest = await sha256Hex(input);
+    text("hash-result", digest);
+  });
+
+  // Hybrid demo
+  $("hybrid-run")?.addEventListener("click", () => {
+    const msg = $("hybrid-text").value || "";
+    if (!msg) { text("hybrid-result", "Enter a message."); return; }
+    const symKey = Math.floor(Math.random() * 25) + 1; // 1..25
+    const symCipher = caesar(msg, symKey);
+    const pub = "PUB-7";  // toy public key
+    const encKey = encryptKeyToy(symKey, pub);
+    text("hybrid-result", `Cipher: ${symCipher}  Encrypted key: ${encKey}  (receiver uses private key to recover ${symKey})`);
+  });
+
+  // Reset
+  $("reset-btn")?.addEventListener("click", () => {
+    ["sym-text","sym-key","asym-text","hash-input","hybrid-text"].forEach(id => { const el = $(id); if (el) el.value = ""; });
+    ["sym-result","asym-keys","asym-result","hash-result","hybrid-result"].forEach(id => text(id, ""));
+  });
+});
+
+/* ==================================================
+   Symmetric helper - Caesar shift
+   ================================================== */
+function clampKey(value) {
+  const n = parseInt(value, 10);
+  if (Number.isNaN(n)) return 3;           // default small shift
+  return Math.min(25, Math.max(1, n));     // 1..25
 }
 
-function demoSymmetric() {
-    const word = prompt("Enter a word to encrypt:");
-    const key = parseInt(prompt("Enter a key (1–25):"), 10);
-    if (!word || isNaN(key)) return alert("Invalid input.");
-    const encrypted = caesarEncrypt(word, key);
-    const decrypted = caesarEncrypt(encrypted, 26 - key);
-    document.getElementById("symResult").innerHTML =
-        `<strong>Encrypted:</strong> ${encrypted}<br><strong>Decrypted:</strong> ${decrypted}`;
+function caesar(str, shift) {
+  return [...str].map(ch => shiftChar(ch, shift)).join("");
 }
 
-// --- Asymmetric Encryption (Eoghan) ---
-function demoAsymmetric() {
-    const message = prompt("Enter a message to encrypt with a public key:");
-    if (!message) return;
-    const publicKey = Math.floor(Math.random() * 9999) + 1000;
-    const privateKey = publicKey + 3;
-    const encrypted = btoa(message + publicKey);
-    const decrypted = atob(encrypted).replace(publicKey, "");
-    document.getElementById("asymResult").innerHTML =
-        `<strong>Public Key:</strong> ${publicKey}<br>
-         <strong>Private Key:</strong> ${privateKey}<br>
-         <strong>Encrypted:</strong> ${encrypted}<br>
-         <strong>Decrypted:</strong> ${decrypted}`;
+function shiftChar(ch, shift) {
+  const code = ch.charCodeAt(0);
+  const A = 65, Z = 90, a = 97, z = 122;
+  if (code >= A && code <= Z) return String.fromCharCode(((code - A + shift) % 26) + A);
+  if (code >= a && code <= z) return String.fromCharCode(((code - a + shift) % 26) + a);
+  return ch;
 }
 
-// --- Hashing (Bradley) ---
-async function demoHashing() {
-    const text = document.getElementById("hashInput").value;
-    if (!text) return alert("Enter text to hash!");
-    const encoder = new TextEncoder();
-    const data = encoder.encode(text);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    document.getElementById("hashResult").innerHTML = `<strong>SHA-256 Hash:</strong><br>${hashHex}`;
+/* ==================================================
+   Asymmetric toy demo
+   This is a teaching toy. Not real RSA.
+   Public key is PUB-k which reverses then shifts by k.
+   Private key is PRI-k which unshifts then reverses.
+   ================================================== */
+function generateToyKeyPair() {
+  const k = Math.floor(Math.random() * 9) + 3; // 3..11
+  return { public: `PUB-${k}`, private: `PRI-${k}` };
 }
 
-// --- Hybrid Encryption (Vitalina) ---
-function demoHybrid() {
-    const message = prompt("Enter a message to encrypt (hybrid):");
-    if (!message) return;
-    const symmetricKey = Math.floor(Math.random() * 25) + 1;
-    const encryptedMsg = caesarEncrypt(message, symmetricKey);
-    const asymmetricKey = Math.floor(Math.random() * 9999) + 1000;
-    const encryptedKey = btoa(symmetricKey + asymmetricKey);
-    document.getElementById("hybridResult").innerHTML =
-        `<strong>Original Message:</strong> ${message}<br>
-         <strong>Symmetric Key:</strong> ${symmetricKey}<br>
-         <strong>Encrypted Message:</strong> ${encryptedMsg}<br>
-         <strong>Encrypted Key (Asymmetric):</strong> ${encryptedKey}`;
+function encryptWithPublic(message, pub) {
+  const k = parseInt(pub.split("-")[1], 10);
+  const reversed = [...message].reverse().join("");
+  return caesar(reversed, k);
 }
 
-// --- Reset All Demos ---
-function resetAll() {
-    document.getElementById("symResult").innerHTML = "";
-    document.getElementById("asymResult").innerHTML = "";
-    document.getElementById("hashResult").innerHTML = "";
-    document.getElementById("hybridResult").innerHTML = "";
-    document.getElementById("hashInput").value = "";
-    alert("All demo results cleared!");
+function decryptWithPrivate(cipher, pri) {
+  const k = parseInt(pri.split("-")[1], 10);
+  const unshifted = caesar(cipher, 26 - (k % 26));
+  return [...unshifted].reverse().join("");
+}
+
+/* ==================================================
+   Hashing - SHA-256 via Web Crypto, fallback if needed
+   ================================================== */
+async function sha256Hex(textIn) {
+  if (window.crypto && window.crypto.subtle) {
+    const enc = new TextEncoder().encode(textIn);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+  // Fallback: very simple non cryptographic hash for very old browsers
+  let h = 0;
+  for (let i = 0; i < textIn.length; i++) {
+    h = (h << 5) - h + textIn.charCodeAt(i);
+    h |= 0;
+  }
+  return `fallback-${Math.abs(h)}`;
+}
+
+/* ==================================================
+   Hybrid demo helper
+   ================================================== */
+function encryptKeyToy(symKey, pub) {
+  const k = parseInt(pub.split("-")[1], 10);
+  // turn key into a two letter string then shift
+  const raw = `K${String(symKey).padStart(2, "0")}`;
+  return caesar(raw, k);
 }
