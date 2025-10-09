@@ -1,5 +1,5 @@
 /* ==================================================
-   ENCRYPTIX STYLE SHEET - Awesome glow and stuff
+   ENCRYPTIX STYLE SHEET - THIS IS THE ONE
    ================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -77,9 +77,7 @@ header p {
 }
 
 @media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
+  .menu-toggle { display: none; }
 }
 
 /* -------------------- Navigation -------------------- */
@@ -123,9 +121,7 @@ nav a[aria-current="page"]::after {
   left: 20%;
 }
 
-nav a:hover {
-  color: #d0aaff;
-}
+nav a:hover { color: #d0aaff; }
 
 .site-nav.active {
   flex-direction: column;
@@ -147,98 +143,47 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* -------------------- Box Layout -------------------- */
+/* -------------------- Universal Box Layout -------------------- */
 .service-item,
 .card,
-.team-member,
 .demo-box {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 14px;
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.15);
-  padding: 28px 26px;
-  margin: 30px auto;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
-  position: relative;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(157, 78, 221, 0.15);
+  padding: 22px 18px;
+  margin: 20px auto;
   border: 1px solid rgba(157, 78, 221, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .service-item:hover,
-.card:hover,
-.team-member:hover,
-.demo-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.35);
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(157, 78, 221, 0.3);
   border-color: #c77dff;
 }
 
-/* -------------------- Typography -------------------- */
 .service-item h2,
-.service-item h3,
-.card h2,
-.card h3,
-.team-member h3 {
+.service-item h3 {
   color: #4b0082;
-  margin-bottom: 14px;
-  text-shadow: 0 0 6px rgba(157, 78, 221, 0.25);
-}
-
-.service-item p,
-.card p,
-.team-member p {
-  color: #2b2b2b;
   margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
-/* -------------------- Team Section -------------------- */
-.team-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.team-member {
-  flex: 1 1 240px;
-  max-width: 260px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
-  transition: all 0.3s ease;
-  padding: 25px;
-  border-radius: 14px;
-  min-height: 380px;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.team-member img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 18px rgba(157, 78, 221, 0.35);
-  transition: all 0.3s ease;
-}
-
-.team-member img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
-}
-
-.team-member h3 {
-  margin: 10px 0 6px;
-  font-size: 1.1rem;
-  color: #4b0082;
-}
-
-.team-member p {
+/* Default paragraph behavior for content boxes (About, Who We Help, etc.) */
+.service-item p,
+.card p {
+  color: #2c2c2c;
   font-size: 0.95rem;
-  color: #2b2b2b;
+  margin: 10px auto;
+  text-align: left;
+  display: block;            /* reset any flex */
+  max-width: 72ch;           /* comfortable reading width */
+  line-height: 1.6;
 }
 
 /* -------------------- Buttons -------------------- */
@@ -248,16 +193,17 @@ button,
   background: linear-gradient(135deg, #4b0082, #9d4edd);
   color: #ffffff;
   border: none;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.3px;
   transition: all 0.3s ease;
-  box-shadow: 0 0 12px rgba(157, 78, 221, 0.4);
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.3);
   position: relative;
   overflow: hidden;
+  align-self: center;
 }
 
 button:hover,
@@ -265,31 +211,128 @@ button:hover,
 .cta-btn:hover {
   background: linear-gradient(135deg, #9d4edd, #c77dff);
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(199, 125, 255, 0.6);
+  box-shadow: 0 0 18px rgba(199, 125, 255, 0.6);
 }
 
-/* Button pulse effect */
-button::after,
-.btn::after,
-.cta-btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255,255,255,0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
+/* -------------------- Services Page Layout -------------------- */
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns on desktop */
+  gap: 25px;
+  align-items: stretch;
+  justify-items: center;
+  margin-top: 25px;
+  width: 100%;
 }
 
-button:active::after,
-.btn:active::after,
-.cta-btn:active::after {
-  width: 220%;
-  height: 220%;
-  opacity: 0;
+/* Card tweaks specifically for the Services grid */
+.service-list .service-item {
+  min-height: 280px;
+  text-align: center;
+}
+
+/* Only center the teaser text inside Services cards */
+.service-list .service-item p {
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+
+/* Align the View Demo button perfectly across all Services cards */
+.service-list .service-item .btn {
+  margin-top: auto;
+  align-self: center;
+  min-width: 120px;
+}
+
+/* Dropdown Menu Styling */
+#demo-select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #9d4edd;
+  font-family: 'Poppins', sans-serif;
+  background: #f9f6ff;
+  color: #4b0082;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#demo-select:hover,
+#demo-select:focus {
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+  outline: none;
+  border-color: #c77dff;
+}
+
+/* Responsive layout adjustments for Services */
+@media (max-width: 1100px) {
+  .service-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .service-list { grid-template-columns: 1fr; }
+}
+
+/* -------------------- Team Section -------------------- */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.team-member {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(157, 78, 221, 0.15);
+  padding: 22px 18px;
+  text-align: center;
+  border: 1px solid rgba(157, 78, 221, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 360px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.team-member:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(157, 78, 221, 0.3);
+  border-color: #c77dff;
+}
+
+.team-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.25);
+  transition: all 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(199, 125, 255, 0.5);
+}
+
+.team-member h3 {
+  color: #4b0082;
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.team-member p {
+  color: #2b2b2b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
 /* -------------------- Inputs & Forms -------------------- */
@@ -311,80 +354,6 @@ textarea:focus {
   outline: none;
   border-color: #9d4edd;
   box-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
-}
-
-/* -------------------- Services Page Layout -------------------- */
-.service-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 30px;
-  align-items: stretch;
-  justify-items: center;
-  margin-top: 20px;
-}
-
-.service-item {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 14px;
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.15);
-  padding: 28px 26px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(157, 78, 221, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 360px;
-}
-
-.service-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.35);
-  border-color: #c77dff;
-}
-
-.service-item h3 {
-  color: #4b0082;
-  margin-bottom: 10px;
-}
-
-.service-item p {
-  flex-grow: 1;
-  color: #2c2c2c;
-  margin-bottom: 12px;
-}
-
-.demo-box {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.demo-box input,
-.demo-box button {
-  width: 90%;
-  max-width: 420px;
-  margin: 6px auto;
-  display: block;
-}
-
-.demo-result {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  background-color: rgba(240, 230, 255, 0.8);
-  padding: 10px;
-  border-radius: 6px;
-  border-left: 4px solid #7b2cbf;
-  word-wrap: break-word;
-}
-
-/* Responsive layout for smaller screens */
-@media (max-width: 768px) {
-  .service-list {
-    grid-template-columns: 1fr;
-  }
-  .service-item {
-    min-height: auto;
-  }
 }
 
 /* -------------------- Footer -------------------- */
@@ -411,44 +380,15 @@ footer::before {
 }
 
 /* -------------------- Animations -------------------- */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* -------------------- Responsive -------------------- */
+@media (max-width: 1100px) {
+  .team-container { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .team-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .service-item,
-  .card,
-  .team-member {
-    margin: 20px 12px;
-    padding: 22px 18px;
-  }
-
-  header img {
-    width: 140px;
-  }
-
-  .demo-box input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .btn, button {
-    width: 100%;
-  }
+  nav { flex-direction: column; align-items: center; }
+  header img { width: 140px; }
+  .btn, button { width: 100%; }
+  .team-container { grid-template-columns: 1fr; }
 }
