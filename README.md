@@ -84,7 +84,7 @@ README.md             → this file
 ```
 
 ## Running information
-The website is hosted on github pages. It is as easy to run as typing in the URL
+The website is hosted on github pages. It is as easy to run as typing in the URL . ( https://eoghan-od.github.io/Encryptix/Encryptix-index.html )
 
 ## Authors
 
