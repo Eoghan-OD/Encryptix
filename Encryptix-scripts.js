@@ -55,52 +55,113 @@ if (symDecryptBtn) {
   });
 }
 
-/* =============================
-   ASYMMETRIC (RSA Demo)
-   ============================= */
-let demoKeys = {};
-const asymGenerateBtn = document.getElementById('asym-generate');
-const asymEncryptBtn = document.getElementById('asym-encrypt');
-const asymDecryptBtn = document.getElementById('asym-decrypt');
+/* ============================================================================
+   ASYMMETRIC ENCRYPTION DEMO (RSA-OAEP)
+   Simple "encrypt then decrypt" walk-through for non technical users
+   ============================================================================ */
 
-async function generateDemoKeys() {
-  const keyPair = await window.crypto.subtle.generateKey(
-    { name: "RSA-OAEP", modulusLength: 1024, publicExponent: new Uint8Array([1,0,1]), hash: "SHA-256" },
-    true,
-    ["encrypt","decrypt"]
-  );
-  demoKeys = keyPair;
-  document.getElementById('asym-keys').textContent = "Public and private key generated (demo use only)";
-}
+if (document.getElementById("asym-text")) {
+  const $ = (id) => document.getElementById(id);
 
-if (asymGenerateBtn) {
-  asymGenerateBtn.addEventListener('click', async () => {
-    animateProgress('asym-progress');
-    await generateDemoKeys();
-  });
-}
+  const textInput   = $("asym-text");
+  const stepsOutput = $("asym-steps");
+  const runBtn      = $("asym-run");
 
-if (asymEncryptBtn) {
-  asymEncryptBtn.addEventListener('click', async () => {
-    const txt = document.getElementById('asym-text').value;
-    if (!demoKeys.publicKey) return alert('Generate keys first');
-    if (!txt) return alert('Enter text');
-    animateProgress('asym-progress');
-    const enc = new TextEncoder().encode(txt);
-    const encrypted = await window.crypto.subtle.encrypt({name:"RSA-OAEP"}, demoKeys.publicKey, enc);
-    document.getElementById('asym-result').textContent = btoa(String.fromCharCode(...new Uint8Array(encrypted)));
-  });
-}
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
 
-if (asymDecryptBtn) {
-  asymDecryptBtn.addEventListener('click', async () => {
-    const txt = document.getElementById('asym-result').textContent;
-    if (!demoKeys.privateKey) return alert('Generate keys first');
-    if (!txt) return alert('No ciphertext to decrypt');
-    animateProgress('asym-progress');
-    const bytes = Uint8Array.from(atob(txt), c => c.charCodeAt(0));
-    const decrypted = await window.crypto.subtle.decrypt({name:"RSA-OAEP"}, demoKeys.privateKey, bytes);
-    document.getElementById('asym-result').textContent = new TextDecoder().decode(decrypted);
+  let publicKey = null;
+  let privateKey = null;
+
+  function showSteps(text, ok = false, error = false) {
+    stepsOutput.textContent = text;
+    stepsOutput.style.whiteSpace = "pre-wrap";
+    if (error) {
+      stepsOutput.style.color = "#8a0000";
+    } else if (ok) {
+      stepsOutput.style.color = "#116611";
+    } else {
+      stepsOutput.style.color = "inherit";
+    }
+  }
+
+  function bufToBase64(buf) {
+    const bytes = new Uint8Array(buf);
+    let bin = "";
+    for (let b of bytes) bin += String.fromCharCode(b);
+    return btoa(bin);
+  }
+
+  async function ensureKeyPair() {
+    // Reuse keys if already generated so the user can run the demo again
+    if (publicKey && privateKey) return;
+
+    const pair = await crypto.subtle.generateKey(
+      {
+        name: "RSA-OAEP",
+        modulusLength: 2048,
+        publicExponent: new Uint8Array([1, 0, 1]),
+        hash: "SHA-256"
+      },
+      true,
+      ["encrypt", "decrypt"]
+    );
+
+    publicKey = pair.publicKey;
+    privateKey = pair.privateKey;
+  }
+
+  runBtn.addEventListener("click", async () => {
+    try {
+      const message =
+        textInput.value.trim() ||
+        "Sample message from a shelter to a vet clinic";
+
+      showSteps("Running demo...");
+
+      // Step 1 – generate or reuse the key pair
+      await ensureKeyPair();
+
+      // Step 2 – encrypt the message with the public key
+      const plainBytes = encoder.encode(message);
+      const cipherBytes = await crypto.subtle.encrypt(
+        { name: "RSA-OAEP" },
+        publicKey,
+        plainBytes
+      );
+      const cipherB64 = bufToBase64(cipherBytes);
+
+      // Truncate encrypted text to 20 characters for display
+      const truncatedCipher =
+        cipherB64.length > 20 ? cipherB64.slice(0, 20) + "..." : cipherB64;
+
+      // Step 3 – decrypt with the private key
+      const decryptedBytes = await crypto.subtle.decrypt(
+        { name: "RSA-OAEP" },
+        privateKey,
+        cipherBytes
+      );
+      const decryptedMessage = decoder.decode(decryptedBytes);
+
+      const explanation =
+        "Step 1  Plain message typed by the user:\n" +
+        "  " + message + "\n\n" +
+        "Step 2  Encrypted message (Truncated to the first 20 characters for tidiness):\n" +
+        "  " + truncatedCipher + "\n\n" +
+        "Step 3  Same message decrypted again with the private key:\n" +
+        "  " + decryptedMessage + "\n\n" +
+        "Summary  Anyone with the public key can encrypt, but only the server that holds\n" +
+        "the private key can turn this encrypted message back into readable text.";
+
+      showSteps(explanation, true);
+    } catch (err) {
+      console.error(err);
+      showSteps(
+        "Something went wrong while running the demo. Please dont ask where we have no idea",
+        false,
+        true
+      );
+    }
   });
 }
 
