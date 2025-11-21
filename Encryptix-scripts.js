@@ -270,3 +270,35 @@ if (resetBtn) {
     hybridStore = {cipher: null, iv: null, wrappedKey: null, rsaKeys: null};
   });
 }
+
+/* =============================
+   Scroll reveal for sections/cards
+   ============================= */
+(function () {
+  const revealEls = document.querySelectorAll(
+    'section, .service-item, .card, .team-member, .form-card'
+  );
+
+  if (!('IntersectionObserver' in window)) {
+    // Old browsers: just show everything
+    revealEls.forEach(el => el.classList.add('reveal-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealEls.forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+})();
