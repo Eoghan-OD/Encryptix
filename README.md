@@ -2,97 +2,130 @@
 
 ### IT3 Group Project Repository
 
-Welcome to the official GitHub repository for **Encryptix**, a cybersecurity consultancy created as part of the IT3 Group Project. This repository contains the full website source code and encryption demonstrations .
+Welcome to the official GitHub repository for **Encryptix**, a specialised cybersecurity consultancy created as part of the IT3 Group Project. This repository contains the complete source code for the Encryptix website, including all encryption demonstrations, scripts, and supporting documentation.
+
+---
 
 ## About Encryptix
 
-Encryptix specialises in delivering practical encryption solutions and security awareness training to veterinary clinics and animal shelters. These organisations frequently manage sensitive client data, financial information, and detailed animal medical records without the benefit of a dedicated cybersecurity team. This leaves them vulnerable to data breaches, ransomware, and unauthorised access, as outlined in our report’s introduction and background research sections .
+Encryptix focuses exclusively on strengthening cybersecurity for **veterinary clinics** and **animal shelters**. These organisations routinely manage sensitive information such as client data, payment details, and detailed medical records but often lack dedicated IT security resources. This makes them vulnerable to ransomware, data breaches, and unauthorised access.
 
-Our aim is to make reliable encryption accessible, understandable, and easy to implement for smaller organisations in the veterinary and animal welfare sector.
+The consultancy was developed to provide clear, practical encryption support informed by the research, background analysis, and threat modelling covered in the group report.
+
+Our mission is to make encryption **accessible, practical, and easy to adopt** for smaller organisations in the veterinary and animal welfare sector.
+
+---
 
 ## Who We Target
 
-Encryptix works exclusively with:
+Encryptix works specifically with:
 
-* **Veterinary clinics**, which store client details, payment records, and medical histories that require encryption to remain GDPR compliant.
-* **Animal rescue shelters**, which handle adopter information, volunteer details, donation records, and sensitive animal welfare documentation.
+### Veterinary Clinics
 
-These organisations rely increasingly on digital systems but often lack the resources to implement strong security controls. Encryptix bridges this gap by providing tailored encryption solutions and staff training informed by our research and compliance analysis .
+Clinics store medical histories, client information, card payment details, and diagnostic data. Strong encryption helps them meet GDPR obligations and protects sensitive systems from external attacks.
+
+### Animal Rescue Shelters
+
+Shelters handle adoption forms, volunteer details, donation information, and internal welfare documentation. Encryption allows them to protect this data even when working with small teams and limited budgets.
+
+Both sectors rely increasingly on digital workflows, and Encryptix bridges the gap by offering tailored cybersecurity solutions informed by real clinical and operational constraints.
+
+---
 
 ## What Encryptix Provides
 
-Our consultancy services are shaped directly by the findings in the “Consultancy Goals”, “Awareness and Training Outline”, and GDPR compliance sections of the report .
+Our services reflect the consultancy objectives and implementation plan outlined in the project report, including:
 
 ### Encryption Services
 
-We implement encryption solutions suited to veterinary clinics and shelters, including:
+Encryptix supports the deployment of:
 
-* **Symmetric encryption** for local data and storage (e.g., AES through BitLocker).
-* **Asymmetric encryption** for secure communication (e.g., OpenSSL-generated key pairs).
-* **Hybrid encryption** to balance secure key exchange with fast data encryption.
-* **Hashing tools** such as SHA-256 for integrity verification.
+* **Symmetric encryption** for local storage and device protection (e.g., AES, BitLocker examples)
+* **Asymmetric encryption** for secure communication between clinics and partner organisations
+* **Hybrid encryption**, balancing performance with secure key exchange
+* **Hashing mechanisms** (SHA-256) for password and record integrity checks
 
-These tools are introduced throughout the website so clients can see how each method works in practice.
+These concepts are demonstrated interactively on the website so that clients can see how each method works in practice.
 
-### Training & Awareness
+### Training and Awareness
 
-Encryptix provides structured training programmes to help staff:
+Encryptix provides structured cybersecurity training, focusing on:
 
-* Understand encryption fundamentals
-* Manage encryption keys safely
-* Maintain GDPR Article 32 compliance
-* Reduce risks caused by human error
-* Respond appropriately to potential breaches
+* Encryption fundamentals
+* Key management
+* GDPR Article 32 security expectations
+* Recognising threats
+* Reducing human error and misconfiguration
+* Responding to potential breaches
 
-Training is based on the frameworks and examples included in the report’s awareness and compliance sections .
+This training is based on the frameworks and guidance developed in the awareness and compliance sections of the report.
 
-### Measurable Success
+### Measuring Success
 
-The consultancy’s effectiveness is measured using the metrics defined in our report , such as:
+Encryptix evaluates its effectiveness using the measurable outcomes defined in the project report, including:
 
-* Achieving ninety percent encryption coverage for sensitive data
-* Improving staff awareness by at least forty percent after training
-* Ensuring demos and practical implementations function correctly
-* Maintaining at least eighty percent client satisfaction
+* A target of **ninety percent encryption coverage** for sensitive data
+* A **forty percent increase** in staff cybersecurity awareness after training
+* Fully functional encryption demonstrations
+* A minimum **eighty percent client satisfaction rating**
 
-These metrics guide development and validation across the project.
+These metrics are used to validate the consultancy’s impact.
+
+---
 
 ## Website Overview
 
-The website in this repository is designed to present Encryptix’s services and demonstrate encryption concepts in a clear, accessible manner. As described in the implementation section of the report , the site includes:
+The Encryptix website is designed as both an educational resource and a proof of concept. It includes:
 
-* A refined homepage tailored to vets and shelters
-* A demonstration hub with symmetric and asymmetric encryption examples
-* Interactive file encryption tools
-* A “Meet the Team” section
-* A consistent, professional design aligned with our consultancy branding
+* A homepage tailored to veterinary clinics and animal shelters
+* Four interactive encryption demos (symmetric, asymmetric, hashing, hybrid)
+* A real file encryption tool using AES-GCM
+* A services section explaining consultancy offerings
+* A team page introducing the project members
+* A consistent design and branding style across all pages
 
-The demos reflect the encryption concepts defined in the research sections of the report.
+All demonstrations complement the encryption concepts defined in the research and technical sections of the report.
+
+---
 
 ## Repository Structure
 
 ```
-/assets               → logos, images, static media  
-/css                  → stylesheet files  
-/js                   → scripts for demos and UI  
-/demo                 → encryption proof-of-concept files  
-index.html            → main website landing page  
-services.html         → encryption demo menu  
-about.html            → project team information  
-demo.html             → interactive demo page  
-README.md             → this file
+/assets               → images, logos, static media  
+/css                  → site stylesheets  
+/js                   → JavaScript for UI and encryption demos  
+/demo                 → proof-of-concept and supporting examples  
+
+Encryptix-index.html       → homepage  
+Encryptix-services.html    → services and demo hub  
+Encryptix-who.html         → meet the team  
+Encryptix-contact.html     → contact page  
+Encryptix-symmetric.html   → symmetric encryption demo  
+Encryptix-asymmetric.html  → asymmetric encryption demo  
+Encryptix-hashing.html     → hashing demo  
+Encryptix-hybrid.html      → hybrid encryption demo
+README.md                  → this file
 ```
 
-## Running information
-The website is hosted on github pages. It is as easy to run as typing in the URL . ( https://eoghan-od.github.io/Encryptix/Encryptix-index.html )
+---
+
+## Running the Website
+
+The full website is hosted on GitHub Pages and can be accessed here:
+
+**[https://eoghan-od.github.io/Encryptix/Encryptix-index.html](https://eoghan-od.github.io/Encryptix/Encryptix-index.html)**
+
+No installation is required. All demos run directly in the browser using JavaScript and the Web Crypto API.
+
+---
 
 ## Authors
 
-* Eoghan O’Donovan
-* Sean Foran
-* Bradley Neville
-* Vitalina Sapozhnik
+* **Eoghan O’Donovan**
+* **Sean Foran**
+* **Bradley Neville**
+* **Vitalina Sapozhnik**
 
 ## Supervisor
 
-Hristo Trifonov
+**Hristo Trifonov**
