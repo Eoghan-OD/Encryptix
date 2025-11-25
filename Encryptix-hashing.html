@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/Encryptix-style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header" role="banner">
     <a href="Encryptix-index.html">
       <img src="Encryptix-pictures/EncryptixLogo.png" alt="Encryptix logo" width="160" loading="lazy">
@@ -23,6 +24,7 @@
     <p>Cybersecurity and encryption awareness for veterinary clinics</p>
   </header>
 
+  <!-- Navigation -->
   <button class="menu-toggle" aria-label="Toggle menu">☰</button>
   <nav class="site-nav" aria-label="Main site navigation">
     <a href="Encryptix-index.html">Home</a>
@@ -31,25 +33,58 @@
     <a href="Encryptix-contact.html">Contact</a>
   </nav>
 
+  <!-- Hashing Section -->
   <section>
     <div class="service-item">
-      <h2>Hashing (Bradley)</h2>
+      <h2>Hashing (Vitalina)</h2>
       <p>
-        Hashing converts text into a fixed-length, irreversible string. 
-        It is often used to secure passwords or verify the integrity of records.
+        This demo shows how a system can store only a hash (fingerprint) of a password and later check
+        if a new password matches, without ever seeing the original text.
       </p>
 
       <div class="demo-box">
-        <input id="hash-input" type="text" placeholder="Enter text to hash">
-        <button id="hash-generate">Generate SHA-256</button>
-        <button id="hash-verify">Verify Hash</button>
-        <p id="hash-result" class="demo-result"></p>
+        <!-- STEP 1 -->
+        <div class="demo-input">
+          <label for="hash-original">
+            Step 1 – Original text (stored as a hash)
+          </label>
+          <input id="hash-original" type="text" placeholder="Type a password or short text">
+
+          <div style="display:flex; gap:0.6rem; margin-top:0.7rem; flex-wrap:wrap;">
+            <button id="hash-save" class="btn" type="button">Save hash</button>
+            <button id="hash-show-verify" class="btn btn-secondary" type="button">Verify</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 (hidden until Verify is pressed) -->
+        <div class="demo-input" id="hash-verify-block" style="margin-top:1.2rem; display:none;">
+          <label for="hash-check">
+            Step 2 – Text to check
+          </label>
+          <input id="hash-check" type="text" placeholder="Type the same or a different text">
+          <button id="hash-compare" class="btn" type="button">Check matching</button>
+        </div>
+
+        <!-- RESULT -->
+        <div class="demo-output" style="margin-top:1.3rem;">
+          <label>Result</label>
+          <div id="hash-result" class="output-box">
+            No hash saved yet. Type text in Step 1 and press “Save hash”.
+          </div>
+        </div>
       </div>
 
-      <a href="Encryptix-services.html" class="btn">← Back to Services</a>
+      <p style="margin-top:1rem; font-size:0.9rem; color:#d8cffc;">
+        Hashing turns your text into a one-way fingerprint. The system stores only this fingerprint.
+        When you type your text again, it is hashed once more and the fingerprints are compared.
+        If they match, the text is the same; if not, even a tiny change gives a different hash.
+      </p>
+
+      <a href="Encryptix-services.html" class="btn" style="margin-top:1.2rem;">← Back to Services</a>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Encryptix Project. All rights reserved. Supervised by Hristo Trifonov.</p>
   </footer>
