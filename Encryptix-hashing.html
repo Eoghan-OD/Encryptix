@@ -25,18 +25,21 @@
   </header>
 
   <!-- Navigation -->
-  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  <nav class="site-nav" aria-label="Main site navigation">
-    <a href="Encryptix-index.html">Home</a>
-    <a href="Encryptix-services.html" aria-current="page">Services</a>
+  <div class="site-nav-wrapper">
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="site-nav" aria-label="Main site navigation">
+      <a href="Encryptix-index.html">Home</a>
+      <a href="Encryptix-services.html" aria-current="page">Services</a>
       <a href="Encryptix-casestudies.html">Case Studies</a>
-    <a href="Encryptix-who.html">Meet the Team</a>
-    <a href="Encryptix-contact.html">Contact</a>
-  </nav>
+      <a href="Encryptix-who.html">Meet the Team</a>
+      <a href="Encryptix-contact.html">Contact</a>
+    </nav>
+  </div>
 
   <!-- Hashing Section -->
   <section>
-    <div class="service-item">
+    <!-- ✨ only change: added "reveal" here -->
+    <div class="service-item reveal">
       <h2>Hashing (Vitalina)</h2>
       <p>
         This demo shows how a system can store only a hash (fingerprint) of a password and later check
