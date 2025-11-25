@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Encryptix | Case Studies</title>
-    <link rel="stylesheet" href="css/encryptix-style.css" />
+
+    <!-- FIXED: Correct file name (uppercase E) -->
+    <link rel="stylesheet" href="css/Encryptix-style.css" />
 </head>
 
 <body>
@@ -18,27 +20,25 @@
 </header>
 
 <!-- Navigation -->
-<button class="menu-toggle" aria-label="Toggle menu">☰</button>
-<nav class="site-nav" aria-label="Main site navigation">
-    <a href="Encryptix-index.html">Home</a>
-    <a href="Encryptix-services.html">Services</a>
-    <a href="Encryptix-casestudies.html" aria-current="page">Case Studies</a>
-    <a href="Encryptix-who.html">Meet the Team</a>
-    <a href="Encryptix-contact.html">Contact</a>
-</nav>
-
-<!-- Hero / Angled Frame -->
-<!--<div class="angled-frame angled-large">
-    <img src="encryptix-pictures/Encryptixlogo.png" alt="Encryptix case studies banner">
+<div class="site-nav-wrapper">
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="site-nav" aria-label="Main site navigation">
+        <a href="Encryptix-index.html">Home</a>
+        <a href="Encryptix-services.html">Services</a>
+        <a href="Encryptix-casestudies.html" aria-current="page">Case Studies</a>
+        <a href="Encryptix-who.html">Meet the Team</a>
+        <a href="Encryptix-contact.html">Contact</a>
+    </nav>
 </div>
 
- Case Studies Section -->
 <section class="case-studies">
-    <h2 class="section-title">Case Studies</h2>
+    <h2 class="section-title reveal">Case Studies</h2>
 
-    <div class="case-grid">
+    <!-- Entire grid reveals as a block -->
+    <div class="case-grid reveal">
+
         <!-- Case Study 1 -->
-        <div class="case-card">
+        <div class="case-card reveal">
             <h3>Symmetric Encryption in a Veterinary Clinic</h3>
             <p>
                 A mid-sized veterinary clinic stored X-rays, blood test results and medical histories on an unencrypted external drive,
@@ -51,7 +51,7 @@
         </div>
 
         <!-- Case Study 2 -->
-        <div class="case-card">
+        <div class="case-card reveal">
             <h3>Asymmetric Encryption for Secure Referrals</h3>
             <p>
                 A veterinary practice shared sensitive referral documents with a specialist hospital using unencrypted email,
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Case Study 3 -->
-        <div class="case-card">
+        <div class="case-card reveal">
             <h3>Hashing to Protect Staff Credentials</h3>
             <p>
                 An animal shelter stored staff passwords in plain text within a shared spreadsheet, posing an immediate security risk.
@@ -74,12 +74,16 @@
                 and greatly improving security resilience.
             </p>
         </div>
+
     </div>
 </section>
 
 <footer>
     <p>© 2025 Encryptix Encryption Consultancy</p>
 </footer>
+
+<!-- ⭐ VERY IMPORTANT — this runs the reveal animations -->
+<script src="js/Encryptix-core.js"></script>
 
 </body>
 </html>
