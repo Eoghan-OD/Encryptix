@@ -997,3 +997,39 @@ button:hover::before,
   letter-spacing: 0.14em;
   color: #c9b3ff;
 }
+
+
+/*icons*/
+
+.feature-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem auto 0;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: rgba(10, 4, 32, 0.9);
+  padding: 1.2rem 1.4rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 180px;
+  border: 1px solid rgba(160, 120, 255, 0.35);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+.feature-icon,
+.demo-icon,
+.case-icon,
+.section-icon {
+  display: block;
+  width: 70px;
+  margin: 0 auto 0.8rem;
+  border-radius: 12px;
+}
+
+.section-icon {
+  width: 40px;
+  margin-bottom: 0.4rem;
+}
