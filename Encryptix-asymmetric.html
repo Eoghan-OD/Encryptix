@@ -25,19 +25,21 @@
   </header>
 
   <!-- Navigation -->
-  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  <nav class="site-nav" aria-label="Main site navigation">
-    <a href="Encryptix-index.html">Home</a>
-    <a href="Encryptix-services.html" aria-current="page">Services</a>
-    <a href="Encryptix-casestudies.html">Case Studies</a>
+  <div class="site-nav-wrapper">
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="site-nav" aria-label="Main site navigation">
+      <a href="Encryptix-index.html">Home</a>
+      <a href="Encryptix-services.html" aria-current="page">Services</a>
+      <a href="Encryptix-casestudies.html">Case Studies</a>
 
-    <a href="Encryptix-who.html">Meet the Team</a>
-    <a href="Encryptix-contact.html">Contact</a>
-  </nav>
+      <a href="Encryptix-who.html">Meet the Team</a>
+      <a href="Encryptix-contact.html">Contact</a>
+    </nav>
+  </div>
 
   <!-- Demo Section -->
   <section>
-    <div class="service-item">
+    <div class="service-item tech-line reveal">
       <h2>Asymmetric Encryption Demo (Public and Private Keys)</h2>
       <p>
         This demo shows how a message can be locked with a public key and unlocked with a private key.
@@ -45,7 +47,7 @@
         while the clinic keeps the private key secret.
       </p>
 
-      <div class="demo-box">
+      <div class="demo-box reveal">
         <label for="asym-text"><strong>Step 1 - Type a message</strong></label>
         <input id="asym-text" type="text" placeholder="Example: Appointment details for Bella the dog">
 
