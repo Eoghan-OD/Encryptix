@@ -569,13 +569,13 @@ select:focus {
 .team-container {
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;   /* Центрує картки */
-  gap: 1.9rem;
+  align-items: center !important;  
+  gap: 1.5rem;
 }
 
 .team-member {
   width: 100%;
-  max-width: 420px; /* 🔥 Робить картку вузькою і красивою */
+  max-width: 700px; 
 }
 
 
@@ -891,10 +891,15 @@ button:hover::before,
 }
 
 .case-grid {
-  display: grid;
-  gap: 1.8rem;
-  margin-top: 1.6rem;
+  justify-content: center; /* centers the grid */
 }
+
+.case-card {
+  max-width: 800px; /* 🔥 prevents cards from being too wide */
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 @media (min-width: 768px) {
   .case-grid {
