@@ -566,11 +566,18 @@ select:focus {
 }
 
 /* Description text */
-.team-member p {
-  margin: 0.1rem 0 0;
-  font-size: 0.9rem;
-  color: #e3dcff;
+.team-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;   /* Центрує картки */
+  gap: 1.9rem;
 }
+
+.team-member {
+  width: 100%;
+  max-width: 420px; /* 🔥 Робить картку вузькою і красивою */
+}
+
 
 /* Hover effect */
 .team-member {
